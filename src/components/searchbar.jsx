@@ -6,22 +6,6 @@ const Searchbar = () => {
     const [editingIndex, setEditingIndex] = useState(null);
     const [editText, setEditText] = useState('');
 
-    useEffect(() => {
-        const storedTasks = localStorage.getItem('tasks');
-        if (storedTasks) {
-            try {
-                setTasks(JSON.parse(storedTasks));
-            } catch (e) {
-                console.error('Error parsing stored tasks:', e);
-                localStorage.removeItem('tasks');
-            }
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }, [tasks]);
-
     const handleInputChange = (e) => {
         setTask(e.target.value);
     };

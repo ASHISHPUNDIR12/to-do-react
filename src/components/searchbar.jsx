@@ -51,7 +51,7 @@ const Searchbar = () => {
 
     const handleClearAll = () => {
         setTasks([]); // Clear the tasks array
-        localStorage.removeItem('tasks'); // Clear local storage
+        
     };
 
     return (

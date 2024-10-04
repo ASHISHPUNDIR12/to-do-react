@@ -4,7 +4,7 @@ const Body = () => {
   return (
     <>
       <div className="hero-section">
-        <h1>To-Do List </h1>
+        <h1 className="text-center text-2xl font-bold">To-Do List </h1>
         <div className="selection-section">
           <Searchbar />
          

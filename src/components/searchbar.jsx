@@ -36,12 +36,18 @@ const Searchbar = () => {
         setEditingIndex(index);
         setEditText(tasks[index].text);
     };
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleTask() ; 
+        }
+    };
 
     const handleSave = (index) => {
         const updateTasks = tasks.map((t, i) => {
             if (i === index) {
                 return { ...t, text: editText };
             }
+          
             return t;
         });
         setTasks(updateTasks);
@@ -51,38 +57,38 @@ const Searchbar = () => {
 
     const handleClearAll = () => {
         setTasks([]); // Clear the tasks array
-        
+
     };
 
     return (
         <div className="container mx-auto p-4">
             <div className="flex space-x-2 mb-4">
-                <input 
-                    className="flex-1 p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                    type="text" 
-                    placeholder="Enter task" 
-                    value={task} 
-                    onChange={handleInputChange} 
+                <input
+                    className="flex-1 p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    type="text"
+                    placeholder="Enter task"
+                    value={task}
+                    onChange={handleInputChange}
                 />
-                <button onClick={handleTask} className="bg-blue-500 text-white p-2 rounded shadow hover:bg-blue-600 transition duration-200">Add</button>
+                <button onKeyDown={handleKeyPress} onClick={handleTask} className="bg-blue-500 text-white p-2 rounded shadow hover:bg-blue-600 transition duration-200">Add</button>
                 <button onClick={handleClearAll} className="bg-red-500 text-white p-2 rounded shadow hover:bg-red-600 transition duration-200">Clear All</button>
             </div>
             <ul className="list-none">
                 {tasks.map((t, index) => (
                     <li key={index} className="flex items-center justify-between border-b py-2">
                         <div className="flex items-center space-x-2">
-                            <input 
-                                type="checkbox" 
-                                checked={t.completed} 
-                                onChange={() => handleToggleCompletion(index)} 
+                            <input
+                                type="checkbox"
+                                checked={t.completed}
+                                onChange={() => handleToggleCompletion(index)}
                                 className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                             />
                             {editingIndex === index ? (
                                 <div className="flex items-center space-x-2">
-                                    <input 
-                                        type="text" 
-                                        value={editText}                
-                                        onChange={(e) => setEditText(e.target.value)} 
+                                    <input
+                                        type="text"
+                                        value={editText}
+                                        onChange={(e) => setEditText(e.target.value)}
                                         className="p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                     <button onClick={() => handleSave(index)} className="bg-green-500 text-white p-2 rounded shadow hover:bg-green-600 transition duration-200">Save</button>
@@ -98,7 +104,7 @@ const Searchbar = () => {
                         <div className="flex space-x-2">
                             {editingIndex !== index && (
                                 <>
-                                    <button onClick={() => handleEdit(index)} className="bg-yellow-500 text-white p-1 rounded hover:bg-yellow-600 transition duration-200">Edit</button>
+                                    <button onKeyDown={handlekeypress} onClick={() => handleEdit(index)} className="bg-yellow-500 text-white p-1 rounded hover:bg-yellow-600 transition duration-200">Edit</button>
                                     <button onClick={() => handleDeleteTask(index)} className="bg-red-500 text-white p-1 rounded hover:bg-red-600 transition duration-200">Delete</button>
                                 </>
                             )}

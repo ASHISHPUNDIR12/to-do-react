@@ -68,9 +68,10 @@ const Searchbar = () => {
                     type="text"
                     placeholder="Enter task"
                     value={task}
+                    onKeyDown={handleKeyPress}
                     onChange={handleInputChange}
                 />
-                <button onKeyDown={handleKeyPress} onClick={handleTask} className="bg-blue-500 text-white p-2 rounded shadow hover:bg-blue-600 transition duration-200">Add</button>
+                <button  onClick={handleTask} className="bg-blue-500 text-white p-2 rounded shadow hover:bg-blue-600 transition duration-200">Add</button>
                 <button onClick={handleClearAll} className="bg-red-500 text-white p-2 rounded shadow hover:bg-red-600 transition duration-200">Clear All</button>
             </div>
             <ul className="list-none">

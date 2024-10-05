@@ -105,7 +105,7 @@ const Searchbar = () => {
                         <div className="flex space-x-2">
                             {editingIndex !== index && (
                                 <>
-                                    <button onKeyDown={handlekeypress} onClick={() => handleEdit(index)} className="bg-yellow-500 text-white p-1 rounded hover:bg-yellow-600 transition duration-200">Edit</button>
+                                    <button  onClick={() => handleEdit(index)} className="bg-yellow-500 text-white p-1 rounded hover:bg-yellow-600 transition duration-200">Edit</button>
                                     <button onClick={() => handleDeleteTask(index)} className="bg-red-500 text-white p-1 rounded hover:bg-red-600 transition duration-200">Delete</button>
                                 </>
                             )}
